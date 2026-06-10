@@ -32,7 +32,7 @@ export default function RootLayout({
     <html
       lang="ar"
       dir="rtl"
-      className="h-full antialiased"
+      className="h-full antialiased scroll-smooth"
     >
       <body className={`${saudiWeb.className} min-h-full flex flex-col`}>
         {children}
