@@ -1,0 +1,11 @@
+{
+  "pages": {},
+  "app": {
+    "[project]/app/page": [
+      "static/media/SaudiWeb_Regular-s.p.2eg_b26oh83i7.woff2",
+      "static/media/SaudiWeb_Bold-s.p.00cydu0mgdirs.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pagesUsingSizeAdjust": false
+}
