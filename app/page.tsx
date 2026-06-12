@@ -82,6 +82,11 @@ const content = {
       "بعض اللحظات التي تحولت فيها مشاهدة الأنمي من اهتمام شخصي إلى جلسات وفعاليات وحوارات جمعت المهتمين بالقصص والثقافة البصرية.",
     partnersLabel: "شركاء الرحلة",
     partnersHeading: "جهات آمنت بالفكرة",
+    askLabel: "اسأل بحرية",
+    askHeading: "لديك سؤال؟",
+    askText: "اسأل بدون تردد وبدون الحاجة للتعريف عن نفسك. أنا هنا للإجابة على أسئلتك والاستماع إلى أفكارك.",
+    askPlaceholder: "اكتب سؤالك هنا...",
+    askButton: "أرسل السؤال",
     finalHeading: "والرحلة مستمرة",
     finalText: "شكراً لكونكم جزءاً من هذه الرحلة. تابعوني لتكونوا مع كل جديد.",
   },
@@ -164,6 +169,11 @@ const content = {
       "Some moments when watching anime turned from a personal interest into sessions, events, and conversations that brought together people passionate about stories and visual culture.",
     partnersLabel: "Journey Partners",
     partnersHeading: "Organizations that believed in the idea",
+    askLabel: "Ask freely",
+    askHeading: "Have a question?",
+    askText: "Ask without hesitation and without needing to identify yourself. I'm here to answer your questions and listen to your thoughts.",
+    askPlaceholder: "Type your question here...",
+    askButton: "Send Question",
     finalHeading: "The journey continues",
     finalText: "Thank you for being part of this journey. Follow me to stay updated.",
   },
@@ -575,6 +585,40 @@ export default function Home() {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Ask Me Section */}
+      <section
+        className="bg-zinc-950 px-4 py-24 text-start sm:px-6 sm:py-28"
+        dir={isRtl ? "rtl" : "ltr"}
+      >
+        <div className="mx-auto max-w-3xl">
+          <p className="mb-4 text-sm text-zinc-500">{t.askLabel}</p>
+          <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">{t.askHeading}</h2>
+          <p className="mb-12 max-w-2xl text-lg leading-8 text-zinc-300">{t.askText}</p>
+
+          <form
+            action="https://formspree.io/f/mqazvqkr"
+            method="POST"
+            className="space-y-6"
+          >
+            <div>
+              <textarea
+                name="message"
+                placeholder={t.askPlaceholder}
+                required
+                className="w-full rounded-2xl border border-zinc-700 bg-zinc-900 px-6 py-4 text-white placeholder-zinc-500 transition focus:border-white/50 focus:outline-none focus:ring-2 focus:ring-white/20"
+                rows={6}
+              />
+            </div>
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 font-semibold text-black transition hover:bg-zinc-200"
+            >
+              {t.askButton}
+            </button>
+          </form>
         </div>
       </section>
 
