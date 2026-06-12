@@ -87,6 +87,7 @@ const content = {
     askText: "اسأل بدون تردد وبدون الحاجة للتعريف عن نفسك. أنا هنا للإجابة على أسئلتك والاستماع إلى أفكارك.",
     askPlaceholder: "اكتب سؤالك هنا...",
     askButton: "أرسل السؤال",
+    askNavLabel: "اسأل",
     finalHeading: "والرحلة مستمرة",
     finalText: "شكراً لكونكم جزءاً من هذه الرحلة. تابعوني لتكونوا مع كل جديد.",
   },
@@ -174,6 +175,7 @@ const content = {
     askText: "Ask without hesitation and without needing to identify yourself. I'm here to answer your questions and listen to your thoughts.",
     askPlaceholder: "Type your question here...",
     askButton: "Send Question",
+    askNavLabel: "Ask",
     finalHeading: "The journey continues",
     finalText: "Thank you for being part of this journey. Follow me to stay updated.",
   },
@@ -220,6 +222,12 @@ export default function Home() {
         >
           EN
         </button>
+          <a
+            href="#ask"
+            className="px-4 py-2 text-sm font-semibold transition text-white hover:bg-white/10"
+          >
+            {t.askNavLabel}
+          </a>
       </div>
 
       {/* Hero Section */}
@@ -590,6 +598,7 @@ export default function Home() {
 
       {/* Ask Me Section */}
       <section
+        id="ask"
         className="bg-zinc-950 px-4 py-24 text-start sm:px-6 sm:py-28"
         dir={isRtl ? "rtl" : "ltr"}
       >
