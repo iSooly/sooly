@@ -1,20 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import { BriefcaseBusiness, Music2 } from "lucide-react";
+import { useState, type ComponentProps } from "react";
+import { BriefcaseBusiness, Share2, MessageCircle, Music2 } from "lucide-react";
 
 const content = {
   ar: {
     heroBadge: "الأنمي • الثقافة • بناء المجتمع",
     heroName: "سليمان الحربي",
     heroLine1: "كل قصة تبدأ بمشاهد واحد",
+    tiktokLabel: "تيك توك",
+    linkedinLabel: "لينكد إن",    instagramLabel: "إنستغرام",    snapchatLabel: "سناب شات",
     heroLine2: "لكن أجمل القصص هي التي تجمع الناس حولها",
     journeyLabel: "بداية الرحلة",
     journeyHeading: "رحلتي مع عالم الأنمي",
     journeyItems: [
       { title: "الرياض", description: "هنا بدأت رحلتي مع الأنمي والقصص التي صنعت شغفي." },
-      { title: "مدينة بريدة", description: "محطة مهمة تضمنت جلسات وفعاليات ومعرض الأنمي." },
+      { title: "بريدة", description: "محطة مهمة تضمنت جلسات وفعاليات ومعرض الأنمي." },
       { title: "الرس", description: "لقاءات ونقاشات جمعت المهتمين بعالم الأنمي." },
       { title: "حائل", description: "الوصول إلى جمهور جديد ومشاركة الشغف في مدينة جديدة." },
     ],
@@ -88,6 +90,10 @@ const content = {
     heroName: "Sulaiman Alharbi",
     heroLine1: "Every story starts with one viewer",
     heroLine2: "But the best stories are the ones that bring people together",
+    tiktokLabel: "TikTok",
+    linkedinLabel: "LinkedIn",
+    instagramLabel: "Instagram",
+    snapchatLabel: "Snapchat",
     journeyLabel: "Journey",
     journeyHeading: "My journey into the world of anime",
     journeyItems: [
@@ -163,6 +169,14 @@ const content = {
   },
 };
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const assetPath = (src: string) => `${basePath}${src}`;
+const imageLoader = ({ src }: { src: string }) => `${basePath}${src}`;
+
+function StaticImage(props: ComponentProps<typeof Image>) {
+  return <Image unoptimized loader={imageLoader} {...props} />;
+}
+
 export default function Home() {
   const [language, setLanguage] = useState<"ar" | "en">("ar");
   const isRtl = language === "ar";
@@ -174,7 +188,7 @@ export default function Home() {
       lang={language}
       className="relative min-h-screen overflow-hidden text-white"
       style={{
-        backgroundImage: "linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.88)), url('/Background.png')",
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.88)), url('${assetPath('/Background.png')}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -204,7 +218,7 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-35"
           style={{
-            backgroundImage: "url('/backgrounds/bg1.jpg')",
+            backgroundImage: `url('${assetPath('/backgrounds/bg1.jpg')}')`,
           }}
         />
 
@@ -212,8 +226,8 @@ export default function Home() {
 
         <div className="relative flex w-full max-w-5xl flex-col items-center">
 
-          <Image
-            src="/profile/profile.png"
+          <StaticImage
+            src={`${basePath}/profile/profile.png`}
             alt="Sulaiman Alharbi"
             width={260}
             height={260}
@@ -246,7 +260,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-6 py-3 transition hover:bg-white hover:text-black"
             >
               <Music2 size={18} aria-hidden="true" />
-              {t.heroBadge === content.en.heroBadge ? "TikTok" : "TikTok"}
+              {t.tiktokLabel}
             </a>
 
             <a
@@ -256,7 +270,27 @@ export default function Home() {
               className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-6 py-3 transition hover:bg-white hover:text-black"
             >
               <BriefcaseBusiness size={18} aria-hidden="true" />
-              LinkedIn
+              {t.linkedinLabel}
+            </a>
+
+            <a
+              href="https://www.instagram.com/isoolyx"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-6 py-3 transition hover:bg-white hover:text-black"
+            >
+              <Share2 size={18} aria-hidden="true" />
+              {t.instagramLabel}
+            </a>
+
+            <a
+              href="https://www.snapchat.com/add/iisooly"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-6 py-3 transition hover:bg-white hover:text-black"
+            >
+              <MessageCircle size={18} aria-hidden="true" />
+              {t.snapchatLabel}
             </a>
 
           </div>
@@ -310,8 +344,8 @@ export default function Home() {
             <div className="grid overflow-hidden rounded-2xl border border-white/25 bg-zinc-900 shadow-2xl shadow-black/30 transition duration-300 hover:-translate-y-2 hover:border-white lg:grid-cols-[1.05fr_0.95fr]">
 
               <div className="flex min-h-[420px] items-center justify-center bg-white lg:min-h-[560px]">
-                <Image
-                  src="/whitebeard-feature.png"
+                <StaticImage
+                  src={`${basePath}/whitebeard-feature.png`}
                   alt={t.featuredTitle}
                   width={1355}
                   height={1161}
@@ -333,7 +367,7 @@ export default function Home() {
               {t.cards.map((card) => (
                 <div key={card.title} className="flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-700 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:border-white hover:shadow-[0_20px_50px_rgba(0,0,0,0.30)]">
                   <div className="flex h-44 items-center justify-center overflow-hidden bg-white lg:h-48">
-                    <Image
+                    <StaticImage
                       src={card.image}
                       alt={card.alt}
                       width={800}
@@ -410,58 +444,72 @@ export default function Home() {
           <p className="mb-16 max-w-3xl text-lg leading-8 text-zinc-300">{t.communityText}</p>
 
           <div className="grid auto-rows-[220px] gap-4 sm:grid-cols-2 md:grid-cols-4 md:auto-rows-[190px]">
-            <Image
-              src="/event1.jpg"
+            <StaticImage
+              src={`${basePath}/event1.jpg`}
               alt={language === "en" ? "Event 1" : "Event 1"}
               width={800}
               height={600}
               className="h-full w-full rounded-2xl border border-white/10 object-cover md:col-span-2 md:row-span-2"
             />
-            <Image
-              src="/event2.jpg"
+            <StaticImage
+              src={`${basePath}/event2.jpg`}
               alt={language === "en" ? "Event 2" : "Event 2"}
               width={800}
               height={600}
               className="h-full w-full rounded-2xl border border-white/10 object-cover"
             />
-            <Image
-              src="/event3.jpg"
+            <StaticImage
+              src={`${basePath}/event3.jpg`}
               alt={language === "en" ? "Event 3" : "Event 3"}
               width={800}
               height={600}
               className="h-full w-full rounded-2xl border border-white/10 object-cover"
             />
-            <Image
-              src="/event4.jpg"
+            <StaticImage
+              src={`${basePath}/event4.jpg`}
               alt={language === "en" ? "Event 4" : "Event 4"}
               width={800}
               height={600}
               className="h-full w-full rounded-2xl border border-white/10 object-cover md:row-span-2"
             />
-            <Image
-              src="/event5.jpg"
+            <StaticImage
+              src={`${basePath}/event5.jpg`}
               alt={language === "en" ? "Event 5" : "Event 5"}
               width={800}
               height={600}
               className="h-full w-full rounded-2xl border border-white/10 object-cover"
             />
-            <Image
-              src="/event6.jpg"
+            <StaticImage
+              src={`${basePath}/event6.jpg`}
               alt={language === "en" ? "Event 6" : "Event 6"}
               width={800}
               height={600}
               className="h-full w-full rounded-2xl border border-white/10 object-cover md:col-span-2"
             />
-            <Image
-              src="/event1.jpg"
+            <StaticImage
+              src={`${basePath}/event7.jpg`}
               alt={language === "en" ? "Event 7" : "Event 7"}
               width={800}
               height={600}
               className="h-full w-full rounded-2xl border border-white/10 object-cover"
             />
-            <Image
-              src="/event2.jpg"
+            <StaticImage
+              src={`${basePath}/event8.jpg`}
               alt={language === "en" ? "Event 8" : "Event 8"}
+              width={800}
+              height={600}
+              className="h-full w-full rounded-2xl border border-white/10 object-cover"
+            />
+            <StaticImage
+              src={`${basePath}/event9.jpg`}
+              alt={language === "en" ? "Event 9" : "Event 9"}
+              width={800}
+              height={600}
+              className="h-full w-full rounded-2xl border border-white/10 object-cover md:col-span-2"
+            />
+            <StaticImage
+              src={`${basePath}/event10.jpg`}
+              alt={language === "en" ? "Event 10" : "Event 10"}
               width={800}
               height={600}
               className="h-full w-full rounded-2xl border border-white/10 object-cover"
@@ -482,8 +530,8 @@ export default function Home() {
 
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-5">
             <div className="flex items-center justify-center rounded-3xl border border-zinc-700 bg-zinc-900 p-8 transition-transform duration-300 hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.25)]">
-              <Image
-                src="/logos/baseer/baseer.png"
+              <StaticImage
+                src={`${basePath}/logos/baseer/baseer.png`}
                 alt={language === "en" ? "Baseer" : "بصير"}
                 width={180}
                 height={80}
@@ -491,8 +539,8 @@ export default function Home() {
               />
             </div>
             <div className="flex items-center justify-center rounded-3xl border border-zinc-700 bg-zinc-900 p-8 transition hover:border-white">
-              <Image
-                src="/logos/literary-partner.png"
+              <StaticImage
+                src={`${basePath}/logos/literary-partner.png`}
                 alt={language === "en" ? "Literary Partner" : "الشريك الأدبي"}
                 width={180}
                 height={80}
@@ -500,8 +548,8 @@ export default function Home() {
               />
             </div>
             <div className="flex items-center justify-center rounded-3xl border border-zinc-700 bg-zinc-900 p-8 transition hover:border-white">
-              <Image
-                src="/logos/bonchai.png"
+              <StaticImage
+                src={`${basePath}/logos/bonchai.png`}
                 alt="Bonchai"
                 width={180}
                 height={80}
@@ -509,8 +557,8 @@ export default function Home() {
               />
             </div>
             <div className="flex items-center justify-center rounded-3xl border border-zinc-700 bg-zinc-900 p-8 transition hover:border-white">
-              <Image
-                src="/logos/bash/bash.png"
+              <StaticImage
+                src={`${basePath}/logos/bash/bash.png`}
                 alt="Bash"
                 width={180}
                 height={80}
@@ -518,8 +566,8 @@ export default function Home() {
               />
             </div>
             <div className="flex items-center justify-center rounded-3xl border border-zinc-700 bg-zinc-900 p-8 transition hover:border-white">
-              <Image
-                src="/logos/culture-house.png"
+              <StaticImage
+                src={`${basePath}/logos/culture-house.png`}
                 alt={language === "en" ? "Culture House" : "بيت الثقافة"}
                 width={180}
                 height={80}
@@ -548,7 +596,25 @@ export default function Home() {
               className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3 text-white transition hover:bg-white hover:text-black"
             >
               <BriefcaseBusiness size={18} aria-hidden="true" />
-              LinkedIn
+              {t.linkedinLabel}
+            </a>
+            <a
+              href="https://www.instagram.com/isoolyx"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3 text-white transition hover:bg-white hover:text-black"
+            >
+              <Share2 size={18} aria-hidden="true" />
+              {t.instagramLabel}
+            </a>
+            <a
+              href="https://www.snapchat.com/add/iisooly"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3 text-white transition hover:bg-white hover:text-black"
+            >
+              <MessageCircle size={18} aria-hidden="true" />
+              {t.snapchatLabel}
             </a>
             <a
               href="https://www.tiktok.com/@isooly"
@@ -557,7 +623,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3 text-white transition hover:bg-white hover:text-black"
             >
               <Music2 size={18} aria-hidden="true" />
-              TikTok
+              {t.tiktokLabel}
             </a>
           </div>
         </div>
