@@ -54,7 +54,7 @@ export default function Home() {
           </button>
           <a
             href="#ask"
-            className="px-4 py-2 text-sm font-semibold transition text-white hover:bg-white/10"
+            className="px-4 py-2 text-sm font-semibold transition text-red-400 hover:bg-red-600/15"
           >
             {t.askNavLabel}
           </a>
