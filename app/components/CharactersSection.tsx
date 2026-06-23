@@ -27,7 +27,7 @@ export default function CharactersSection({ t, isRtl }: Props) {
                   alt={t.featuredTitle}
                   width={1355}
                   height={1161}
-                  className="h-full max-h-[640px] w-full object-contain"
+                  className="h-full max-h-[640px] w-full scale-110 object-contain object-top"
                 />
               </div>
 
@@ -36,7 +36,7 @@ export default function CharactersSection({ t, isRtl }: Props) {
                 {/* Red accent bar */}
                 <div className="h-1 w-12 rounded-full bg-red-600" />
 
-                <p className="text-xs font-black uppercase tracking-[0.25em] text-red-500">
+                <p className="text-sm font-bold text-red-500">
                   {t.featuredSubtitle}
                 </p>
 
@@ -64,7 +64,7 @@ export default function CharactersSection({ t, isRtl }: Props) {
                     alt={card.alt}
                     width={800}
                     height={500}
-                    className="h-full w-full object-cover object-top"
+                    className="h-full w-full object-cover object-center"
                   />
                 </div>
                 <div className="p-4 sm:p-5">
