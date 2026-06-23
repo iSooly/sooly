@@ -27,7 +27,7 @@ export default function CharactersSection({ t, isRtl }: Props) {
                   alt={t.featuredTitle}
                   width={1355}
                   height={1161}
-                  className="h-full w-full scale-[1.55] object-cover object-top"
+                  className="h-full w-full scale-[1.55] origin-top object-cover object-top"
                 />
               </div>
 
@@ -53,7 +53,7 @@ export default function CharactersSection({ t, isRtl }: Props) {
 
           {/* ─── Four character cards ─── */}
           <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
-            {t.cards.map((card) => (
+            {t.cards.map((card, i) => (
               <div
                 key={card.title}
                 className="flex flex-col overflow-hidden rounded-2xl border-t-4 border-t-red-600 border-x border-b border-zinc-800 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.40)]"
@@ -64,7 +64,8 @@ export default function CharactersSection({ t, isRtl }: Props) {
                     alt={card.alt}
                     width={800}
                     height={500}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover"
+                    style={{ objectPosition: i === 2 ? "center 65%" : "center" }}
                   />
                 </div>
                 <div className="p-4 sm:p-5">
