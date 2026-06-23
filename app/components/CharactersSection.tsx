@@ -65,7 +65,7 @@ export default function CharactersSection({ t, isRtl }: Props) {
                     width={800}
                     height={500}
                     className="h-full w-full object-cover"
-                    style={{ objectPosition: i === 2 ? "center 65%" : "center" }}
+                    style={{ objectPosition: i === 2 ? "center 30%" : "center" }}
                   />
                 </div>
                 <div className="p-4 sm:p-5">
