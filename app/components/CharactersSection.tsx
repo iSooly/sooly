@@ -21,13 +21,13 @@ export default function CharactersSection({ t, isRtl }: Props) {
 
             <div className="grid lg:grid-cols-[1fr_1fr]">
               {/* Image — full bleed, bigger */}
-              <div className="flex min-h-[360px] items-center justify-center bg-white lg:min-h-[640px]">
+              <div className="flex min-h-[360px] overflow-hidden bg-white lg:min-h-[640px]">
                 <StaticImage
                   src="/whitebeard-feature.png"
                   alt={t.featuredTitle}
                   width={1355}
                   height={1161}
-                  className="h-full max-h-[640px] w-full scale-110 object-contain object-top"
+                  className="h-full w-full scale-[1.55] object-cover object-top"
                 />
               </div>
 
