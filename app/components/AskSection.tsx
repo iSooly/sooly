@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Content } from "../content";
+import ChapterLabel from "./ChapterLabel";
 
 type Props = { t: Content; isRtl: boolean };
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -69,7 +70,7 @@ export default function AskSection({ t, isRtl }: Props) {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-3xl">
-        <p className="mb-4 text-xs font-semibold text-red-500">{t.askLabel}</p>
+        <ChapterLabel number="08" label={t.askLabel} />
         <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">{t.askHeading}</h2>
         <p className="mb-10 max-w-2xl text-base leading-8 text-zinc-400 sm:text-lg">{t.askText}</p>
 
@@ -99,7 +100,7 @@ export default function AskSection({ t, isRtl }: Props) {
             <button
               type="submit"
               disabled={state === "submitting"}
-              className="inline-flex items-center justify-center rounded-full bg-red-600 px-8 py-3 font-semibold text-white transition hover:bg-red-500 disabled:opacity-60"
+              className="inline-flex min-h-[48px] min-w-[160px] items-center justify-center rounded-full bg-red-600 px-8 py-3 font-semibold text-white transition hover:bg-red-500 disabled:opacity-60"
             >
               {t.askButton}
             </button>

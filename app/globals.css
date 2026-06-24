@@ -22,3 +22,28 @@ body {
 /* Hide scrollbar but keep scrollable (for carousels) */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Manga: speed lines radiating from center */
+.speed-lines {
+  background-image: repeating-conic-gradient(
+    rgba(255, 255, 255, 0.012) 0deg 1deg,
+    transparent 1deg 3.5deg
+  );
+}
+
+/* Manga: halftone dot grid */
+.halftone {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+/* Manga: diagonal screentone lines */
+.screentone {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.018) 0px,
+    rgba(255, 255, 255, 0.018) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+}

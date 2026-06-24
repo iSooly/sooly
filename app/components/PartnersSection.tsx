@@ -1,5 +1,6 @@
 import type { Content } from "../content";
 import StaticImage from "./StaticImage";
+import ChapterLabel from "./ChapterLabel";
 
 type Props = { t: Content; isRtl: boolean };
 
@@ -15,7 +16,7 @@ export default function PartnersSection({ t, isRtl }: Props) {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-6xl">
-        <p className="mb-4 text-xs font-semibold text-red-500">{t.partnersLabel}</p>
+        <ChapterLabel number="06" label={t.partnersLabel} />
         <h2 className="mb-10 text-4xl font-bold text-white md:text-5xl">{t.partnersHeading}</h2>
 
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">

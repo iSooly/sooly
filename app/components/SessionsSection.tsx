@@ -1,4 +1,5 @@
 import type { Content } from "../content";
+import ChapterLabel from "./ChapterLabel";
 
 type Props = { t: Content; isRtl: boolean };
 
@@ -9,7 +10,7 @@ export default function SessionsSection({ t, isRtl }: Props) {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-6xl">
-        <p className="mb-4 text-xs font-semibold text-red-500">{t.sessionsLabel}</p>
+        <ChapterLabel number="04" label={t.sessionsLabel} />
         <h2 className="mb-12 text-4xl font-bold text-white sm:text-5xl md:text-6xl">{t.sessionsHeading}</h2>
 
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-5">

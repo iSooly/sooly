@@ -1,5 +1,6 @@
 import type { Content } from "../content";
 import StaticImage from "./StaticImage";
+import ChapterLabel from "./ChapterLabel";
 
 type Props = { t: Content; isRtl: boolean };
 
@@ -14,7 +15,7 @@ export default function CommunitySection({ t, isRtl }: Props) {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-6xl">
-        <p className="mb-4 text-xs font-semibold text-red-500">{t.communityLabel}</p>
+        <ChapterLabel number="05" label={t.communityLabel} />
         <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">{t.communityHeading}</h2>
         <p className="mb-10 max-w-3xl text-base leading-8 text-zinc-400 sm:text-lg">{t.communityText}</p>
 

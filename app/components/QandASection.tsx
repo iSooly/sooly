@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { Content } from "../content";
+import ChapterLabel from "./ChapterLabel";
 
 type QARecord = {
   id: string;
@@ -41,7 +42,7 @@ export default function QandASection({ t, isRtl }: Props) {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-3xl">
-        <p className="mb-4 text-xs font-semibold text-red-500">{t.qandaLabel}</p>
+        <ChapterLabel number="07" label={t.qandaLabel} />
         <h2 className="mb-10 text-4xl font-bold text-white md:text-5xl">{t.qandaHeading}</h2>
 
         <div className="space-y-4">

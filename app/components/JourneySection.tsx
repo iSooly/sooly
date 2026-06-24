@@ -1,4 +1,5 @@
 import type { Content } from "../content";
+import ChapterLabel from "./ChapterLabel";
 
 type Props = { t: Content; isRtl: boolean };
 
@@ -8,8 +9,11 @@ export default function JourneySection({ t, isRtl }: Props) {
       className="relative z-10 bg-zinc-950 px-4 py-16 text-start sm:px-6 sm:py-28"
       dir={isRtl ? "rtl" : "ltr"}
     >
-      <div className="mx-auto max-w-5xl">
-        <p className="mb-4 text-xs font-semibold text-red-500">{t.journeyLabel}</p>
+      {/* Diagonal screentone texture */}
+      <div className="screentone pointer-events-none absolute inset-0" />
+
+      <div className="relative mx-auto max-w-5xl">
+        <ChapterLabel number="01" label={t.journeyLabel} />
         <h2 className="mb-10 text-4xl font-bold md:text-6xl">{t.journeyHeading}</h2>
 
         <div className="my-10 grid gap-4 sm:grid-cols-2">
