@@ -37,6 +37,16 @@ body {
   background-size: 14px 14px;
 }
 
+/* Manga character modal entrance */
+@keyframes manga-slide-in {
+  from { opacity: 0; transform: translateY(36px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.manga-in {
+  animation: manga-slide-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* Manga: diagonal screentone lines */
 .screentone {
   background-image: repeating-linear-gradient(

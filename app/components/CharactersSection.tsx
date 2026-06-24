@@ -1,10 +1,16 @@
+"use client";
+
+import { useState } from "react";
 import type { Content } from "../content";
 import StaticImage from "./StaticImage";
 import ChapterLabel from "./ChapterLabel";
+import CharacterModal from "./CharacterModal";
 
 type Props = { t: Content; isRtl: boolean };
 
 export default function CharactersSection({ t, isRtl }: Props) {
+  const [selected, setSelected] = useState<number | null>(null);
+
   return (
     <section
       className="bg-zinc-950 px-4 py-16 text-start sm:px-6 sm:py-28"
@@ -44,11 +50,7 @@ export default function CharactersSection({ t, isRtl }: Props) {
             </div>
           </div>
 
-          {/* ─── Four character cards ───
-              Mobile: horizontal swipe carousel (one card at a time)
-              sm+: 2-col grid
-              lg+: 4-col grid
-          ─── */}
+          {/* ─── Four character cards (mobile carousel / desktop grid) ─── */}
           <div
             className="
               -mx-4 flex snap-x snap-mandatory overflow-x-auto gap-4 px-4 pb-4 no-scrollbar
@@ -57,12 +59,14 @@ export default function CharactersSection({ t, isRtl }: Props) {
             "
           >
             {t.cards.map((card, i) => (
-              <div
+              <button
                 key={card.title}
+                type="button"
+                onClick={() => setSelected(i)}
                 className="
-                  snap-center shrink-0 w-[80vw]
+                  snap-center shrink-0 w-[80vw] text-start
                   sm:w-auto
-                  flex flex-col overflow-hidden rounded-2xl border-t-4 border-t-red-600 border-x border-b border-zinc-800 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.40)]
+                  group flex flex-col overflow-hidden rounded-2xl border-t-4 border-t-red-600 border-x border-b border-zinc-800 bg-zinc-900 transition duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.40)] hover:border-red-600/50
                 "
               >
                 <div className="flex h-52 items-center justify-center overflow-hidden bg-white sm:h-44 lg:h-48">
@@ -71,15 +75,18 @@ export default function CharactersSection({ t, isRtl }: Props) {
                     alt={card.alt}
                     width={800}
                     height={500}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                     style={{ objectPosition: i === 2 ? "center 30%" : "center" }}
                   />
                 </div>
-                <div className="p-4 sm:p-5">
+                <div className="flex flex-1 flex-col p-4 sm:p-5">
                   <h3 className="mb-2 text-base font-bold text-white sm:text-lg">{card.title}</h3>
-                  <p className="text-xs leading-6 text-zinc-400 sm:text-sm sm:leading-7">{card.description}</p>
+                  <p className="text-xs leading-6 text-zinc-400 sm:text-sm sm:leading-7 line-clamp-3">{card.description}</p>
+                  <p className="mt-3 text-xs font-semibold text-red-600/60 transition group-hover:text-red-500">
+                    {isRtl ? "← اقرأ الملف" : "Read file →"}
+                  </p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
 
@@ -90,6 +97,16 @@ export default function CharactersSection({ t, isRtl }: Props) {
 
         </div>
       </div>
+
+      {/* Character modal */}
+      {selected !== null && (
+        <CharacterModal
+          card={t.cards[selected]}
+          index={selected}
+          isRtl={isRtl}
+          onClose={() => setSelected(null)}
+        />
+      )}
     </section>
   );
 }
